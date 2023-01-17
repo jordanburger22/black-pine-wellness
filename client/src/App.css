@@ -1,0 +1,206 @@
+body{
+    margin: 0;
+    background-color: silver;
+}
+
+    /* Nav Bar */
+.nav-bar{
+    height: 150px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+}
+
+.nav-logo{
+    height: 100px;
+    align-self: center;
+    margin-left: 15px;
+}
+
+.nav-link{
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+    align-self: flex-end;
+}
+
+    /* Home */
+
+.home-container{
+    padding: 20px;
+    height: 80vh;
+}
+
+.home-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.service-link{
+    width: 50%;
+    height: 200px;
+    border: black solid 2px;
+    margin-bottom: 30px;
+    background-size: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px #111 ;
+    font-size: 20px;
+}
+
+.home-link-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    /* Services */
+
+.services-container{
+    width: 100%;
+    bottom: 200px;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+    background-color: silver;
+    padding-top: 20px;
+    
+}
+
+.service{
+    display: flex;
+    margin-bottom: 30px;
+    grid-column: 2;
+    background: black;
+    color: white;
+    height: 300px;
+    align-items: center;
+    padding: 10px;
+}
+
+.service-photo{
+    width: 400px;
+}
+
+.service-info{
+    margin-left: 20px;
+}
+
+.service-header{
+    grid-column: 2;
+}
+
+.service-massage-link{
+    color: white;
+    text-decoration: none;
+}
+
+.service-massage-link:hover{
+    font-weight: bold;
+}
+
+    /* Contact */
+
+.contact-container{
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.contact-form-container{
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.contact-input{
+    width: 400px;
+    margin-bottom: 5px;
+    height: 50px;
+}
+
+.contact-button{
+    width: 200px;
+}
+
+.contact-info{
+    margin-top: 80px;
+    font-size: 22px;
+}
+
+
+    /* Massage Styles */
+
+.massageStyles-container{
+    padding: 20px;
+    
+}
+
+.massage-style{
+    border: solid 2px black;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+
+.link-to-services{
+    color: black;
+    text-decoration: none;
+}
+
+.link-to-services:hover{
+    font-weight: bold;
+}
+
+.link-to-services-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+    /* Footer */
+
+.footer-container{ 
+    height: 100px;
+    background-color: black;
+    color: white;
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-link{
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover{
+    font-weight: bold;
+}
+
+    /* Admin */
+
+.admin-container{
+    margin: 20px;
+}
+
+.admin-info{
+    border: black solid 2px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.admin-massage-styles{
+    border-bottom: dotted black 1px;
+    margin-bottom: 5px;
+}
