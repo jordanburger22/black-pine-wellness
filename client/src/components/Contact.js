@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import dataContext from "./dataContext"
+import logo from "../images/black-pine-logo.jpg"
 
 function Contact(){
 
@@ -19,7 +20,7 @@ function Contact(){
     return(
         <div className="contact-container">
             <div className="contact-row1">
-
+                <img src={logo} className= 'contact-logo' />
             </div>
 
             <form className="contact-form-container">

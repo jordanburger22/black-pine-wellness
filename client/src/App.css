@@ -109,7 +109,7 @@ body{
 .contact-container{
     height: 80vh;
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 25% 50% 25%;
 }
 
 .contact-form-container{
@@ -117,7 +117,7 @@ body{
     flex-direction: column;
     grid-column: 2;
     align-items: center;
-    margin-top: 40px;
+    justify-content: center;
 }
 
 .contact-input{
@@ -131,8 +131,24 @@ body{
 }
 
 .contact-info{
-    margin-top: 80px;
     font-size: 22px;
+}
+
+.contact-logo{
+    width: 100%;
+}
+
+.contact-row1{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-row3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -203,4 +219,52 @@ body{
 .admin-massage-styles{
     border-bottom: dotted black 1px;
     margin-bottom: 5px;
+}
+
+
+    /* Edit Fields */
+
+.edit-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form > input{
+    margin-bottom: 10px;
+}
+
+.edit-form > button{
+    width: 200px;
+}
+
+    /* Admin Login */
+
+.admin-login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.admin-login-form-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: black solid 2px;
+    width: 400px;
+    height: 400px;
+}
+
+.admin-login-input{
+    margin-bottom: 10px;
+}
+
+.admin-login-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

@@ -3,7 +3,7 @@ import { useState } from "react"
 
 function ServiceData(props){
 
-    const {title, subTitle, description, price, serviceImg, serviceBannerImg} = props
+    const {title, subTitle, description, price, serviceImg, serviceBannerImg, _id} = props
     const [serviceEditMode, setServiceEditMode] = useState(false)
 
     function changeServiceMode(){
@@ -23,6 +23,7 @@ function ServiceData(props){
             <h3>Service Banner: {serviceBannerImg}</h3>
             <h3>Service Image: {serviceImg}</h3>
             <button onClick={changeServiceMode}>Change Info</button>
+            <button onClick={() => props.delete(_id)}>Delete Service</button>
         </>}
         {serviceEditMode &&
         <>

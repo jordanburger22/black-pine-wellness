@@ -2,53 +2,35 @@ import dataContext from "./dataContext"
 import { useContext, useState } from "react"
 import ServiceData from "./ServiceData"
 import BusinessData from "./BusinessData"
+import MassageData from "./MassageStyleData"
+import AddNewMassage from "./AddNewMassage"
+import AddNewService from "./AddNewService"
 
-function Admin(){
 
+function Admin(props){
+    
     const data = useContext(dataContext)
     const businessInfo = data.businessInfo
     const massageStyles = data.massageStyles
     const services = data.services
 
-    
-    
-    const [massageEditMode, setMassageEditMode] = useState(false)
+    const [newMassageToggle, setMassageToggle] = useState(false)
+    const [newServiceToggle, setNewServiceToggle] = useState(false)
 
-
-
-    
-
-    function changeMassageMode(){
-        setMassageEditMode(prevState => !prevState)
+    function toggleMassage(){
+        setMassageToggle(prevValue => !prevValue)
     }
 
+    function toggleService(){
+        setNewServiceToggle(prevValue => !prevValue)
+    }
 
-
-
-
-    const massageData = massageStyles.map(massage => (
-        <div key={massage._id} className="admin-massage-styles">
-            {!massageEditMode &&
-            <>
-                <h3>Massage Title: {massage.title}</h3>
-                <h3>Massage Price : {massage.price}</h3>
-                <h3>Massage Description: {massage.description}</h3>
-                <button onClick={changeMassageMode}>Change Info</button>
-            </>}
-            {massageEditMode &&
-            <>
-                 <input />   
-                 <input />   
-                 <input />
-                 <button onClick={changeMassageMode}>Save</button>   
-            </>}
-        </div>
-    ))
-
+    
     const serviceMap = services.map(service => {
         return <ServiceData 
             {...service}
             key= {service._id}
+            delete = {props.deleteService}
         />
     })
 
@@ -59,6 +41,13 @@ function Admin(){
         />
     })
 
+    const massageMap = massageStyles.map(massage => {
+        return <MassageData 
+            {...massage}
+            key= {massage._id}
+            delete = {props.deleteMassage}
+        />
+    })
     
 
 
@@ -68,13 +57,33 @@ function Admin(){
                 <h1>Basic Info</h1>
                 {businessMap}
             </div>
+
             <div className="admin-info">
                 <h1>Service Info</h1>
                 {serviceMap}
+                {!newServiceToggle && 
+                <button onClick={toggleService}>Add New Service</button>}
+                {newServiceToggle &&<>
+                    <AddNewService 
+                        toggle= {toggleService}
+                        addService = {props.addService}
+                    />
+                </>}
             </div>
+
             <div className="admin-info">
-                <h1>Massage Styles</h1>
-                {massageData}
+                <>
+                    <h1>Massage Styles</h1>
+                    {massageMap}
+                    {!newMassageToggle && 
+                    <button onClick={toggleMassage}>Add New Massage</button>}
+                </>
+                {newMassageToggle && <>
+                    {<AddNewMassage 
+                        toggle = {toggleMassage}
+                        addNewMassage = {props.saveMassage}
+                    />}
+                </>}
             </div>
         </div>
     )

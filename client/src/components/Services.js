@@ -7,7 +7,7 @@ function Services(){
     const data = useContext(dataContext)
     const servicesInfo = data.services
     
-
+    console.log(servicesInfo)
     const serviceList = servicesInfo.map(service => (
         <div className="service">
             {/* <img className="service-banner" src={service.serviceBannerImg}/> */}

@@ -26,7 +26,7 @@ function ServiceEditFields(props){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className = 'edit-form' onSubmit={handleSubmit}>
 
             <label htmlFor="title">Title: </label>
             <input 
@@ -92,12 +92,54 @@ function ServiceEditFields(props){
 }
 
 
-function MassageEditFields(){
+function MassageEditFields(props){
+
+    const [massageStyleInputs, setMassageStyleInputs] = useState({
+        title: props.title,
+        description: props.description,
+        price: props.price
+    })
+
+    function handleChange(e){
+        const {name, value} = e.target
+        setMassageStyleInputs(prevValue => ({
+            ...prevValue,
+            [name]: value
+        }))
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        props.toggle()
+    }
+
     return(
-        <form>
-            <input />
-            <input />
-            <input />
+        <form className ='edit-form' onSubmit={handleSubmit}>
+            <label htmlFor="title">Title: </label>
+            <input 
+                value={massageStyleInputs.title}
+                name='title'
+                id="title"
+                onChange={handleChange}
+            />
+
+            <label htmlFor="description">Description: </label>
+            <input 
+                value={massageStyleInputs.description}
+                name='description'
+                id="description"
+                onChange={handleChange}
+            />
+
+            <label htmlFor="price">Price: </label>
+            <input 
+                value={massageStyleInputs.price}
+                name='price'
+                id="price"
+                onChange={handleChange}
+            />
+
+            <button>Save</button>
         </form>
     )
 }
@@ -129,7 +171,7 @@ function BusinessEditFields(props){
     }
     console.log(businessInputs)
     return(
-        <form onSubmit={handleSubmit}>
+        <form className = 'edit-form' onSubmit={handleSubmit}>
             
            <label htmlFor="name">Name: </label> 
             <input 
@@ -201,4 +243,4 @@ function BusinessEditFields(props){
     )
 }
 
-export {ServiceEditFields, BusinessEditFields}
+export {ServiceEditFields, BusinessEditFields, MassageEditFields}
