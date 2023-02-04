@@ -1,20 +1,22 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useContext, useState } from "react"
+import { UserContext } from "./AuthContext"
+import AuthForm from "./AuthForm"
+
+
+const initInputs = {username: "", password: ""}
 
 function AdminLogin(){
 
-    const navigate = useNavigate()
+    const { login, resetAuthErr, errMsg} = useContext(UserContext)
 
-    const [failedLogin, setFailedLogin] = useState(false)
+    console.log(errMsg)
 
-    const [loginCredentials, setLoginCredentials] = useState({
-        username: '',
-        password: ''
-    })
+    const [inputs, setInputs] = useState(initInputs)
 
     function handleChange(e){
         const {name, value} = e.target
-        setLoginCredentials(prevCredentials => ({
+        resetAuthErr()
+        setInputs(prevCredentials => ({
             ...prevCredentials,
             [name]: value
         }))
@@ -22,47 +24,22 @@ function AdminLogin(){
 
     function handleLogin(e){
         e.preventDefault()
-        const {username, password} = loginCredentials
-        if( username === 'test' & password === 'test'){
-            navigate('/admin')
-        } else setFailedLogin(true)
+        login(inputs)   
     }
 
     return(
         <div className="admin-login-container">
 
             <div className="admin-login-form-div">
-
                 <h1>Admin Login</h1>
 
-                <form onSubmit={handleLogin} className="admin-login-form">
-                    
-                    <label htmlFor="username">Username: </label>
-                    <input 
-                        value={loginCredentials.username}
-                        name="username"
-                        id="username"
-                        onChange={handleChange}
-                        className= 'admin-login-input'
-                        />
+                <AuthForm 
+                   inputs = {inputs}
+                   handleChange = {handleChange}
+                   handleSubmit = {handleLogin} 
+                   errMsg = {errMsg}
+                />
                 
-
-                
-                    <label htmlFor="password">Password: </label>
-                    <input 
-                        value={loginCredentials.password}
-                        name="password"
-                        id="password"
-                        onChange={handleChange}
-                        type='password'
-                        className= 'admin-login-input'
-                        />
-                    
-                    <button>Login</button>
-                </form>
-
-                {failedLogin && 
-                <p>Incorrect username or password</p>}
             </div>
         </div>
     )

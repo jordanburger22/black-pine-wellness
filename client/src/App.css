@@ -1,6 +1,8 @@
 body{
     margin: 0;
-    background-color: silver;
+    background-color: #444444;
+    color: white;
+    font-family: 'Oswald', sans-serif;
 }
 
     /* Nav Bar */
@@ -24,6 +26,11 @@ body{
     align-self: flex-end;
 }
 
+.logout-btn{
+    align-self: flex-end;
+    margin: 10px;
+}
+
     /* Home */
 
 .home-container{
@@ -37,6 +44,7 @@ body{
     justify-content: center;
     align-items: center;
     font-size: 25px;
+    text-shadow: 1px 1px 2px black;
 }
 
 .service-link{
@@ -67,7 +75,6 @@ body{
     bottom: 200px;
     display: grid;
     grid-template-columns: 20% 60% 20%;
-    background-color: silver;
     padding-top: 20px;
     
 }

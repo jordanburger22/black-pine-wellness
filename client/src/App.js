@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios'
 import Header from './components/Header'; 
 import Admin from './components/Admin';
@@ -7,13 +7,17 @@ import MassageStyles from './components/MassageStyles';
 import Services from './components/Services';
 import Home from './components/Home';
 import Contact from './components/Contact';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import dataContext from './components/dataContext';
 import Footer from './components/Footer';
 import AdminLogin from './components/AdminLogin';
+import ProtectedRoute from './components/ProtectedRoute';
+import { UserContext } from "./components/AuthContext.js"
 
 function App() {
   
+  const { token, logout } = useContext(UserContext)
+
   const [services, setServices] = useState([])
   const [massageStyles, setMassageStyles] = useState([])
   const [businessInfo, setBusinessInfo] = useState([])
@@ -65,7 +69,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      
         <dataContext.Provider value = {{
           services,
           massageStyles, 
@@ -73,7 +77,7 @@ function App() {
         }}>
 
 
-          <Header />
+          <Header token = {token} logout = {logout}/>
 
           <Routes>
             <Route path = "/" element = {<Home />} />
@@ -85,21 +89,25 @@ function App() {
             <Route path = "/massagestyles" element = {<MassageStyles />}/>
 
             <Route path = '/admin'  
-              element={<Admin 
-                saveMassage = {sendNewMassage} 
-                deleteMassage = {deleteMassage}
-                addService = {addNewService}
-                deleteService = {deleteService}
-                />}/>
+              element={
+              <ProtectedRoute token = {token}>
+                <Admin 
+                  saveMassage = {sendNewMassage} 
+                  deleteMassage = {deleteMassage}
+                  addService = {addNewService}
+                  deleteService = {deleteService}
+                />
+              </ProtectedRoute>}
+                />
               
-            <Route path = '/adminlogin' element= {<AdminLogin />}/>
+            <Route path = '/adminlogin' element= { token ? <Navigate to='/admin' /> : <AdminLogin />}/>
 
           </Routes>
 
           <Footer />
 
         </dataContext.Provider>
-      </Router>
+      
     </div>
   );
 }

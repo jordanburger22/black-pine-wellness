@@ -20,7 +20,7 @@ function Contact(){
     return(
         <div className="contact-container">
             <div className="contact-row1">
-                <img src={logo} className= 'contact-logo' />
+                <img alt="" src={logo} className= 'contact-logo' />
             </div>
 
             <form className="contact-form-container">
